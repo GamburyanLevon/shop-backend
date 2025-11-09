@@ -10,7 +10,11 @@ const authMiddleware = require('./middleware/auth');
 const requireAdmin = require('./middleware/admin');
 
 const app = express();
-app.use(cors({ origin: process.env.FRONTEND_URL || true }));
+app.use(cors({
+  origin: process.env.FRONTEND_URL,
+  credentials: true
+}));
+
 app.use(express.json());
 
 // Public (no token required)
